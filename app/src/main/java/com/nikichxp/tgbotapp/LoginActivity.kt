@@ -2,6 +2,7 @@ package com.nikichxp.tgbotapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -69,6 +70,7 @@ fun LoginScreen(
 
     val context = LocalContext.current
     val serverConnectionConfig = remember { ServerConnectionConfig(context) }
+    val url = remember { serverConnectionConfig.url }
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -113,7 +115,10 @@ fun LoginScreen(
                 value = serverInfoViewModel.url,
                 onValueChange = { serverInfoViewModel.updateUrl(it) },
                 label = { Text("URL") },
-                placeholder = { Text("https://aaaaaaaa") },
+                placeholder = {
+                    Log.i("tag", "placeholder is: ${serverInfoViewModel.url}")
+                    Text(serverInfoViewModel.url)
+                },
                 modifier = Modifier.fillMaxWidth(),
                 singleLine = true
             )
