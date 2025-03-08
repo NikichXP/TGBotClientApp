@@ -36,6 +36,7 @@ jobs:
           name: Release v${{ github.run_number }}
           draft: false
           prerelease: true
-          files: ${{ steps.sign_app.outputs.signedReleaseFile }}
+          files: app/build/outputs/apk/release/app-release-unsigned.apk
+          generate_release_notes: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
