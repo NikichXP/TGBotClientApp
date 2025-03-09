@@ -34,8 +34,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.nikichxp.tgbotapp.ui.theme.TGBotAppTheme
+import org.koin.android.ext.android.inject
 
 class LoginActivity : ComponentActivity() {
+
+    private val serverInfoViewModel: ServerInfoViewModel by inject()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -70,7 +74,6 @@ fun LoginScreen(
 
     val context = LocalContext.current
     val serverConnectionConfig = remember { ServerConnectionConfig(context) }
-    val url = remember { serverConnectionConfig.url }
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
